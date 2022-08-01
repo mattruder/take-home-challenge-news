@@ -1,23 +1,28 @@
 import logo from './logo.svg';
 import './App.css';
+import ArticlesAll from './Components/ArticlesAll'
+import { useState, useEffect } from 'react'
 
 function App() {
+
+  const [allArticles, addArticles] = useState([])
+  const apiKey = 'TwP3k9RevRuGPfTGnqYZzp6GjPdYnFlv'
+
+  useEffect() => {
+    fetch(`https://api.nytimes.com/svc/topstories/v2/arts.json?api-key=${apiKey}`)
+      .then(response => response.json())
+      .then(data => addArticles(data.results))
+      .catch(error => console.log(error))
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="header">
+      <h1>The News.</h1>
+    </div>
+    <div className="news-scroll-container">
+      {allArticles && <ArticlesAll allArticles={allArticles}/>}
+    </div>
     </div>
   );
 }
