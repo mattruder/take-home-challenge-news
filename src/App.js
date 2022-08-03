@@ -22,14 +22,16 @@ function App() {
   return (
     <div className="App">
     <div className="header">
-      <Link to="/" style={{ textDecoration: 'none' }}>
+      <Link to="/" style={{ textDecoration: 'none', color: 'black' }}>
       <h1>The (Art) News.</h1>
       </Link>
     </div>
+    <div className="articles-area">
     <Routes>
       <Route exact path="/" element={allArticles && <Home allArticles={allArticles} setCurrentArticle={setCurrentArticle}/>} />
       <Route exact path="/articles/:title" element={currentArticle && <ArticleFull article={currentArticle}/>} />
     </Routes>
+    </div>
     </div>
   );
 }
