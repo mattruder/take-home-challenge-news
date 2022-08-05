@@ -43,4 +43,3 @@ A user may scroll through articles on the homepage and click the title to be tak
 ### **Future Additions**
 
 - Testing in Cypress
-- Further testing
